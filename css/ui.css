@@ -1,0 +1,259 @@
+/* =====================================================
+   CLOUDGAINZ — UI COMPONENTS
+   Nav · Mobile menu · Modal · Theme toggle
+   ===================================================== */
+
+/* ---- Nav ---- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--nav-bg);
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  flex-shrink: 0;
+}
+/* 2026 mark as SVG (docs/gtm/logo-light.svg / logo-dark.svg): standard on
+   light, on-dark version on the dark theme. Same visual size as the old
+   2 MB PNG, which was scaled 3x to hide its transparent padding. */
+.logo { height: 62px; }
+.logo img {
+  height: 62px;
+  width: auto;
+  display: block;
+}
+.logo-dark { display: none !important; }
+[data-theme="dark"] .logo-light { display: none !important; }
+[data-theme="dark"] .logo-dark { display: block !important; }
+
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a {
+  color: var(--ink-2);
+  font-weight: 500;
+  font-size: 15px;
+  padding: 8px 0;
+}
+.nav-links a:hover { color: var(--azure); }
+
+.nav-cta-wrap { display: flex; align-items: center; gap: 8px; }
+
+.hamburger {
+  display: none;
+  background: none;
+  border: 0;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  padding: 0;
+  color: var(--ink);
+  align-items: center;
+  justify-content: center;
+}
+.hamburger svg { width: 22px; height: 22px; }
+
+/* ---- Mobile menu ---- */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 76px 0 0 0;
+  background: var(--bg);
+  z-index: 30;
+  padding: 32px var(--gutter);
+  flex-direction: column;
+  gap: 8px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: var(--ink);
+  font-size: 22px;
+  font-weight: 500;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.mobile-menu a:hover { color: var(--azure); }
+.mobile-menu .btn { margin-top: 20px; align-self: flex-start; }
+
+/* ---- Modal ---- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 35, 0.55);
+  z-index: 100;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(20px, 6vh, 80px) 20px;
+  overflow-y: auto;
+}
+.modal-backdrop.open { display: flex; }
+
+.modal {
+  background: var(--bg-card);
+  width: 100%;
+  max-width: 540px;
+  border-radius: 12px;
+  padding: 36px;
+  position: relative;
+  box-shadow: var(--shadow-soft);
+}
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.modal-close:hover { background: var(--bg-section); color: var(--ink); }
+
+.modal h3 { font-size: 24px; margin-bottom: 8px; letter-spacing: -0.02em; }
+.modal p.sub { color: var(--muted); margin-bottom: 24px; font-size: 15px; }
+
+/* Form */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.form-grid .field { margin-bottom: 0; }
+
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.field label { font-size: 13px; font-weight: 500; color: var(--ink-2); }
+.field input,
+.field textarea,
+.field select {
+  font-family: inherit;
+  font-size: 15px;
+  padding: 11px 13px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg-card);
+  color: var(--ink);
+  width: 100%;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--azure);
+  box-shadow: 0 0 0 3px rgba(42, 111, 201, 0.2);
+}
+.field textarea { resize: vertical; min-height: 100px; }
+.field .err { font-size: 12.5px; color: var(--critical); display: none; }
+.field.invalid input,
+.field.invalid textarea,
+.field.invalid select { border-color: var(--critical); }
+.field.invalid .err { display: block; }
+
+/* Submitting state */
+.field input:disabled,
+.field textarea:disabled,
+.field select:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+.modal-error {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--critical);
+  display: none;
+}
+.modal-error.visible { display: block; }
+
+/* Success state */
+.modal-success {
+  text-align: center;
+  padding: 12px 0 4px;
+  display: none;
+}
+.modal-success.visible { display: block; }
+.modal-success .check {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--azure-tint);
+  color: var(--azure);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.modal-success h3 { margin-bottom: 8px; }
+.modal-success p { color: var(--muted); margin: 0; }
+
+/* ---- Theme toggle ---- */
+.theme-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 50;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px;
+  display: flex;
+  gap: 2px;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 35, 0.25);
+}
+.theme-toggle button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.theme-toggle button:hover { color: var(--ink); }
+.theme-toggle button.active { background: var(--ink); color: var(--bg); }
+
+/* ---- Responsive ---- */
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .nav-cta-wrap .btn-primary { display: none; }
+  .hamburger { display: inline-flex; }
+}
+@media (max-width: 520px) {
+  .modal { padding: 28px 22px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .theme-toggle { bottom: 16px; right: 16px; padding: 3px; }
+  .theme-toggle button { padding: 6px 10px; font-size: 10px; }
+}

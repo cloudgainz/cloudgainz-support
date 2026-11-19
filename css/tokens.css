@@ -1,0 +1,82 @@
+/* =====================================================
+   CLOUDGAINZ — DESIGN TOKENS
+   Three themes via data-theme on <html>.
+   Key: cg-theme  Values: light | slate | dark
+   ===================================================== */
+
+:root {
+  --max: 1200px;
+  --gutter: clamp(20px, 4vw, 56px);
+  --section: clamp(56px, 7vw, 96px);
+}
+
+/* ---- Light (default) ---- */
+:root,
+[data-theme="light"] {
+  /* Accent = Cloudgainz blue (brand-palette.json roles.blue.light); ink and
+     muted = roles.ink and roles.neutral. Was Azure #0078D4. */
+  --azure: #2a6fc9;
+  --azure-dark: #1d4f91;
+  --azure-tint: #E6F1FB;
+  --btn-bg: #2a6fc9;
+  --btn-bg-hover: #1d4f91;
+  --critical: #a23b3b;
+  --ink: #16202c;
+  --ink-2: #374151;
+  --muted: #5a6472;
+  --line: #E5E9F0;
+  --line-soft: #EEF1F5;
+  --bg: #FFFFFF;
+  --bg-section: #F7F9FC;
+  --bg-card: #FFFFFF;
+  --footer-bg: #16202c;
+  --nav-bg: rgba(255, 255, 255, 0.92);
+  --shadow-soft: 0 20px 60px -20px rgba(15, 23, 35, 0.30);
+  color-scheme: light;
+}
+
+/* ---- Slate (mid) ---- */
+[data-theme="slate"] {
+  /* One step deeper than roles.blue so accent text clears 4.5:1 on the slate page */
+  --azure: #245fae;
+  --azure-dark: #1a4a8a;
+  --btn-bg: #245fae;
+  --btn-bg-hover: #1a4a8a;
+  --critical: #a23b3b;
+  --azure-tint: #D9E8F6;
+  --ink: #1A1F2B;
+  --ink-2: #2D3543;
+  --muted: #5F6675;
+  --line: #D7DBE3;
+  --line-soft: #E2E6ED;
+  --bg: #EBEEF3;
+  --bg-section: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --footer-bg: #16202c;
+  --nav-bg: rgba(235, 238, 243, 0.88);
+  --shadow-soft: 0 20px 60px -20px rgba(15, 23, 35, 0.18);
+  color-scheme: light;
+}
+
+/* ---- Dark ---- */
+[data-theme="dark"] {
+  /* roles.blue.dark for accent text; buttons keep white text on roles.blue.light */
+  --azure: #5a9be6;
+  --azure-dark: #7BBDED;
+  --btn-bg: #2a6fc9;
+  --btn-bg-hover: #1d4f91;
+  --critical: #e0716f;
+  --azure-tint: rgba(79, 163, 224, 0.16);
+  --ink: #E8ECF2;
+  --ink-2: #C9D0DA;
+  --muted: #8892A3;
+  --line: #2A3340;
+  --line-soft: #1F2733;
+  --bg: #0F1620;
+  --bg-section: #131B27;
+  --bg-card: #18202C;
+  --footer-bg: #0A111B;
+  --nav-bg: rgba(15, 22, 32, 0.85);
+  --shadow-soft: 0 20px 60px -20px rgba(0, 0, 0, 0.60);
+  color-scheme: dark;
+}
